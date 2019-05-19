@@ -7,7 +7,9 @@ ENV GODOT_TEMPLATE_PATH $HOME/.local/share/godot/templates/
 ENV GODOT /usr/local/bin/godot
 
 # FIXME: Deal with the boto3 thing properly.
-RUN apt-get update -y && apt-get install -y curl git make unzip zip python3 python3-pip && pip3 install boto3 && adduser --disabled-password --gecos "" builder
+# FIXME: I have no idea why /home/builder exists and has to be removed?
+#        Is it some kind of caching bullshit?
+RUN apt-get update -y && apt-get install -y curl git make unzip zip python3 python3-pip && pip3 install boto3 && rm -rf /home/builder && adduser --disabled-password --gecos "" builder
 RUN curl -sS https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_linux_headless.64.zip | funzip > ${GODOT} && chmod 755 ${GODOT}
 
 USER builder
