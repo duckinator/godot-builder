@@ -1,7 +1,7 @@
-FROM debian:9-slim
+FROM debian:10-slim
 
-ENV GODOT_VERSION 3.1.1
-ENV GODOT_TEMPLATE_DIR 3.1.1.stable
+ENV GODOT_VERSION 3.2.3
+ENV GODOT_TEMPLATE_DIR 3.2.3.stable
 
 ENV HOME /home/builder
 ENV PATH $PATH:/opt/butler
